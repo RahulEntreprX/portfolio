@@ -1,0 +1,231 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 255 255 255;
+  --foreground: 17 24 39;
+  --accent: 14 165 233; /* default sky */
+  --accent-dark: 2 132 199;
+}
+
+.dark :root {
+  --background: 2 6 23; /* slate-950-ish */
+  --foreground: 226 232 240; /* slate-200 */
+}
+
+/* MOVA theme (dark-green aesthetic) */
+.theme-mova :root, .theme-mova {
+  --background: 12 38 34; /* deep green */
+  --foreground: 235 245 238; /* mint/cream */
+  --accent: 134 239 172; /* soft emerald for accents */
+  --accent-dark: 5 150 105;
+}
+
+/* BLUE theme (blue aesthetic) */
+.theme-blue :root, .theme-blue {
+  --background: 30 64 175; /* blue-600 */
+  --foreground: 248 250 252; /* slate-50 */
+  --accent: 59 130 246; /* blue-500 */
+  --accent-dark: 37 99 235; /* blue-600 */
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  color: rgb(var(--foreground));
+  background: rgb(var(--background));
+  background-image: var(--bg-gradient);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  @apply transition-colors;
+}
+
+.container {
+  @apply max-w-6xl mx-auto px-4;
+}
+
+.glass {
+  @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-glass dark:bg-white/5 dark:border-white/10;
+}
+
+.btn-primary { background-color: rgb(var(--accent)); color: white; border-radius: .5rem; padding: .5rem 1rem; transition: background-color .2s; }
+.btn-primary:hover { background-color: rgb(var(--accent-dark)); }
+
+.btn-secondary { border-radius: .5rem; padding: .5rem 1rem; border: 1px solid rgba(0,0,0,.1); color: #111827; transition: background-color .2s; }
+.dark .btn-secondary { border-color: rgba(255,255,255,.15); color: #e5e7eb; }
+.btn-secondary:hover { background-color: rgba(0,0,0,.04); }
+.dark .btn-secondary:hover { background-color: rgba(255,255,255,.08); }
+
+/* Accent utilities */
+.text-accent { color: rgb(var(--accent)); }
+.hover\:text-accent:hover { color: rgb(var(--accent)); }
+.bg-accent { background-color: rgb(var(--accent)); }
+.hover\:bg-accent-dark:hover { background-color: rgb(var(--accent-dark)); }
+.border-accent { border-color: rgb(var(--accent)); }
+.ring-accent { --tw-ring-color: rgb(var(--accent)); }
+
+/* Subtle animated background grid */
+.bg-grid {
+  background-image: linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.dark .bg-grid {
+  background-image: linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px);
+}
+.theme-mova .bg-grid {
+  background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+}
+
+.theme-blue .bg-grid {
+  background-image: linear-gradient(to right, rgba(255,255,255,0.08) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255,255,255,0.08) 1px, transparent 1px);
+}
+
+/* Theme families (emerald, indigo, rose, amber, purple, cyan, pink, orange, teal, violet) */
+.theme-emerald {
+  --accent: 16 185 129;
+  --accent-dark: 5 150 105;
+}
+.theme-indigo {
+  --accent: 99 102 241;
+  --accent-dark: 67 56 202;
+}
+.theme-rose {
+  --accent: 244 63 94;
+  --accent-dark: 190 18 60;
+}
+.theme-amber {
+  --accent: 245 158 11;
+  --accent-dark: 217 119 6;
+}
+.theme-purple {
+  --accent: 147 51 234;
+  --accent-dark: 126 34 206;
+}
+.theme-cyan {
+  --accent: 6 182 212;
+  --accent-dark: 8 145 178;
+}
+.theme-pink {
+  --accent: 236 72 153;
+  --accent-dark: 219 39 119;
+}
+.theme-orange {
+  --accent: 249 115 22;
+  --accent-dark: 234 88 12;
+}
+.theme-teal {
+  --accent: 20 184 166;
+  --accent-dark: 13 148 136;
+}
+.theme-violet {
+  --accent: 139 92 246;
+  --accent-dark: 124 58 237;
+}
+
+/* Footer bold background wordmark (for MOVA theme) */
+.mova-wordmark {
+  font-weight: 800;
+  letter-spacing: .02em;
+  color: rgba(255,255,255,0.06);
+  text-transform: uppercase;
+}
+
+@keyframes grid-pan {
+  from { transform: translateY(0); }
+  to { transform: translateY(24px); }
+}
+
+.animate-grid-pan {
+  animation: grid-pan 12s linear infinite;
+}
+
+/* Fade up sequence */
+.fade-up-pre { opacity: 0; transform: translateY(8px); }
+.fade-up-enter { opacity: 1; transform: translateY(0); transition: opacity .4s ease, transform .4s ease; }
+
+/* Type / gradient accents */
+.type-seq {
+  animation: typeReveal 1.2s ease-out 0.05s both;
+  background: linear-gradient(92deg, rgb(var(--foreground)) 0%, rgba(var(--accent),1) 55%, rgba(var(--accent-dark),1) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes typeReveal {
+  from { filter: blur(4px); letter-spacing: .02em; opacity: .2; }
+  to { filter: blur(0); letter-spacing: 0; opacity: 1; }
+}
+
+.grad-accent {
+  background: linear-gradient(90deg, rgb(var(--accent)) 0%, rgba(var(--accent-dark),1) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  transition: filter .2s ease;
+}
+.grad-accent:hover { filter: brightness(1.1); }
+
+/* Premium underline utility for subheadlines */
+.underline-fade {
+  position: relative;
+}
+.underline-fade:after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -6px;
+  height: 3px; width: 56%;
+  background: linear-gradient(90deg, rgba(var(--accent),1), rgba(var(--accent-dark),0.4));
+  border-radius: 9999px;
+  filter: blur(0.2px);
+}
+
+/* High-contrast title gradient per theme */
+.title-gradient {
+  background: linear-gradient(90deg, rgb(var(--foreground)) 10%, rgba(var(--accent),1) 55%, rgba(var(--accent-dark),1) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow:
+    0 1px 0 rgba(0,0,0,0.10),
+    0 2px 20px rgba(0,0,0,0.12),
+    0 8px 40px rgba(0,0,0,0.10);
+}
+.dark .title-gradient {
+  background: linear-gradient(90deg, #fff 15%, rgba(var(--accent),1) 60%, rgba(var(--accent-dark),1) 100%);
+  text-shadow:
+    0 1px 0 rgba(0,0,0,0.45),
+    0 8px 40px rgba(0,0,0,0.45);
+}
+.theme-mova .title-gradient {
+  background: linear-gradient(90deg, #f5f5f5 15%, rgba(var(--accent),1) 60%, rgba(var(--accent-dark),1) 100%);
+  text-shadow:
+    0 1px 0 rgba(0,0,0,0.40),
+    0 8px 40px rgba(0,0,0,0.40);
+}
+
+/* Feathered image mask for soft edges */
+.feather-mask {
+  -webkit-mask-image: radial-gradient(100% 100% at 50% 50%, black 85%, transparent 100%);
+  mask-image: radial-gradient(100% 100% at 50% 50%, black 85%, transparent 100%);
+  filter: brightness(1.02) contrast(1.03);
+  transition: all 0.5s ease;
+}
+
+/* Hide scrollbar but keep scrolling functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
