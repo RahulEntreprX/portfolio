@@ -1,3 +1,4 @@
+'use client' // Add this if the page uses any client-side features
 import ProjectList from "../components/projects/ProjectList";
 import { getFeaturedProjects } from "@/data";
 import Hero from "../components/home/Hero";
