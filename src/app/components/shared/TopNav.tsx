@@ -13,7 +13,7 @@ export default function TopNav() {
     <div className="mx-auto w-full md:w-auto">
       <div className="mx-auto flex items-center gap-5 rounded-full glass px-4 py-2 md:px-6 md:py-3 shadow-xl backdrop-saturate-150">
         <Link href="/" className="font-semibold tracking-tight text-gray-900 dark:text-slate-100">
-          DREAMR
+          PROFILE
         </Link>
         <nav className="hidden md:flex items-center gap-5 text-sm">
           {links.map((l) => (
