@@ -66,6 +66,7 @@ export type Project = {
       image: images[0],
       repoUrl: "https://github.com/yourname/churn-model",
       demoUrl: "",
+      featured: false,
     },
     {
       title: "NLP: Support Ticket Classifier",
@@ -80,7 +81,7 @@ export type Project = {
       image: images[1],
       repoUrl: "https://github.com/yourname/ticket-nlp",
       demoUrl: "",
-      featured : true,
+      featured: true,
     },
     {
       title: "Time Series Forecasting",
@@ -95,7 +96,7 @@ export type Project = {
       image: images[2],
       repoUrl: "https://github.com/yourname/forecasting",
       demoUrl: "",
-      featured : true,
+      featured: true,
     },
     {
       title: "Recommendation System",
@@ -110,6 +111,7 @@ export type Project = {
       image: images[3],
       repoUrl: "https://github.com/yourname/recsys",
       demoUrl: "",
+      featured: false,
     },
     {
       title: "LLM-Powered Insights",
@@ -124,7 +126,7 @@ export type Project = {
       image: images[4],
       repoUrl: "https://github.com/yourname/analytics-copilot",
       demoUrl: "",
-      featured : true,
+      featured: true,
     },
     {
       title: "Computer Vision Quality Control",
@@ -138,7 +140,7 @@ export type Project = {
       image: images[5],
       repoUrl: "https://github.com/yourname/quality-cv",
       demoUrl: "",
-      featured : true,
+      featured: true,
     },
   ];
   
